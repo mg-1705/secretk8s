@@ -2,6 +2,7 @@ pipeline{
     agent{
         kubernetes {
             yamlFile 'secret_jfrog_jenkins.yaml'
+            yamlFile 'docker_jfrog.yaml'
         }
     }
     
