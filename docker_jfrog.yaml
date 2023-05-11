@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: madhurhai
+  namespace: nerdcont
+spec:
+  containers:
+  - name: nerdctlcont
+    image: madhur17/nerdctl:1
+    command: [ "sleep" ]
+    args: [ "infinity" ]
+    volumeMounts:
+      - name: containerdsock
+        mountPath: "/var/run/containerd/containerd.sock"
+      - name: dockerdsock
+        mountPath: "/var/run/docker.sock"
+  volumes:
+  - name: containerdsock
+    hostPath:
+      path: /var/run/containerd/containerd.sock
+  - name: dockerdsock
+    hostPath:
+      path: /var/run/docker.sock
